@@ -1,1 +1,37 @@
+.styled-form {
+    background: #f4f4f9;              /* колір фону */
+    color: #333;                      /* колір тексту */
+    width: 350px;                     /* ширина форми */
+    margin: 50px auto;                /* позиціонування по центру */
+    padding: 20px;                    /* внутрішні відступи */
+    border-radius: 12px;              /* закруглені кути */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* тінь */
+    display: flex;
+    flex-direction: column;
+}
 
+.styled-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.styled-form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.styled-form button {
+    background: #2c3e50;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.styled-form button:hover {
+    background: #1a252f;
+}
