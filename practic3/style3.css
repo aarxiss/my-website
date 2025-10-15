@@ -1,6 +1,6 @@
 /* --- ЗАГАЛЬНІ СТИЛІ --- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Roboto", Arial, sans-serif;
     margin: 0;
     background-color: #f9f9f9;
     color: #0f0f0f;
@@ -14,7 +14,6 @@ body {
     padding: 0 24px;
     height: 56px;
     background-color: white;
-    border-bottom: 1px solid #ddd;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -32,6 +31,7 @@ body {
 
 .header__center {
     flex: 0.5;
+    display: flex;
     justify-content: center;
     max-width: 600px;
 }
@@ -57,22 +57,29 @@ body {
     cursor: pointer;
 }
 
+.header__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-left: 12px;
+}
+
 .material-icons {
     color: #606060;
 }
 
-
-/* --- ОСНОВНА ЧАСТИНА СТОРІНКИ --- */
+/* --- ОСНОВНА ЧАСТИНА --- */
 .main-body {
-    display: flex; /* ЦЕ ГОЛОВНЕ ВИПРАВЛЕННЯ! */
+    display: flex;
     height: calc(100vh - 56px);
 }
 
 /* --- БІЧНА ПАНЕЛЬ (SIDEBAR) --- */
 .sidebar {
-    flex: 0 0 240px; /* Займає 240px, не росте і не стискається */
+    flex: 0 0 240px;
     background-color: white;
-    overflow-y: auto; /* Додає прокрутку, якщо контенту багато */
+    overflow-y: auto;
+    padding-top: 12px;
 }
 
 .sidebar__item {
@@ -80,6 +87,8 @@ body {
     align-items: center;
     padding: 10px 24px;
     cursor: pointer;
+    border-radius: 10px;
+    margin: 0 12px;
 }
 
 .sidebar__item.active, .sidebar__item:hover {
@@ -101,7 +110,8 @@ hr {
 .sidebar__title {
     padding: 10px 24px;
     font-size: 16px;
-    color: #606060;
+    color: #0f0f0f;
+    font-weight: 500;
 }
 
 .sidebar__channel-avatar {
@@ -110,11 +120,11 @@ hr {
     border-radius: 50%;
 }
 
-
 /* --- КОНТЕНТ (ФІЛЬТРИ + ВІДЕО) --- */
 .content-area {
-    flex: 1; /* Займає весь вільний простір */
-    overflow-y: auto; /* Дозволяє прокручувати контент, а не всю сторінку */
+    flex: 1;
+    overflow-y: auto;
+    background-color: #f9f9f9;
 }
 
 /* --- ФІЛЬТРИ --- */
@@ -151,7 +161,6 @@ hr {
     color: white;
 }
 
-
 /* --- СІТКА З ВІДЕО --- */
 .videos-grid {
     display: flex;
@@ -162,7 +171,7 @@ hr {
 
 /* --- КАРТКА ВІДЕО --- */
 .video-card {
-    width: calc(33.33% - 12px);
+    width: calc(33.33% - 11px);
     cursor: pointer;
 }
 
@@ -182,7 +191,7 @@ hr {
 
 .video-card__info {
     display: flex;
-    margin-top: 12px;
+    padding-top: 12px;
 }
 
 .video-card__avatar {
@@ -191,7 +200,6 @@ hr {
     border-radius: 50%;
     margin-right: 12px;
     object-fit: cover;
-    background-color: #ccc;
 }
 
 .video-card__text h4 {
@@ -199,7 +207,6 @@ hr {
     font-size: 16px;
     font-weight: 500;
     line-height: 22px;
-    /* Обрізаємо довгий текст */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -211,7 +218,6 @@ hr {
     font-size: 14px;
     color: #606060;
 }
-
 
 /* --- АДАПТИВНІСТЬ --- */
 @media (max-width: 1024px) {
