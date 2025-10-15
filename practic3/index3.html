@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Flexbox Clone</title>
+    <title>YouTube Flexbox Клон</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
     <header class="header">
         <div class="header__left">
             <i class="material-icons">menu</i>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="Логотип YouTube">
         </div>
 
         <div class="header__center">
@@ -53,17 +53,64 @@
                 <span>Історія</span>
             </div>
         </aside>
-<div class="video-card">
-    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/VF_vB6-CfL4?start=1128" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <div class="video-card__info">
-        <div class="video-card__avatar"></div>
-        <div class="video-card__text">
-            <h4>Назва відео тут | Дуже цікаве відео</h4>
-            <p>Назва каналу</p>
-            <p>1.2 млн переглядів • 1 тиждень тому</p>
+
+        <div class="content">
+            
+            <div class="filters">
+                <button class="filter-btn active">Усі</button>
+                <button class="filter-btn">Музика</button>
+                <button class="filter-btn">Ігри</button>
+                <button class="filter-btn">Новинки</button>
+                <button class="filter-btn">Фільми</button>
+                <button class="filter-btn">Освіта</button>
+                <button class="filter-btn">Прямі трансляції</button>
+                <button class="filter-btn">Нещодавно завантажені</button>
+            </div>
+
+            <main class="videos-grid">
+                
+                <div class="video-card">
+                    <div class="video-card__thumbnail">
+                        <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" title="lofi hip hop radio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__info">
+                        <img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt="Аватар каналу">
+                        <div class="video-card__text">
+                            <h4>lofi hip hop radio - beats to relax/study to</h4>
+                            <p>Lofi Girl</p>
+                            <p>2,6 млн переглядів • 3 роки тому</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-card__thumbnail">
+                        <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="lofi hip hop radio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__info">
+                        <img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt="Аватар каналу">
+                        <div class="video-card__text">
+                            <h4>lofi hip hop radio - beats to sleep/chill to</h4>
+                            <p>Lofi Girl</p>
+                            <p>1,5 млн переглядів • 2 роки тому</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/TURbeZDBV44" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/DWcJgHslh0c" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/86YLFOog4GM" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/kgx4WGK0oNU" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/n61ULEU7SA0" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/Mvs6_4a3p6I" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/lTRiuFIWV54" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/jPSb-Vw-R4E" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/LXb3EKWsInQ" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+                <div class="video-card"><div class="video-card__thumbnail"><iframe src="https://www.youtube.com/embed/W6q1AWnjdos" title="Example" frameborder="0" allowfullscreen></iframe></div><div class="video-card__info"><img class="video-card__avatar" src="https://yt3.ggpht.com/ytc/AIdro_k-2-d11i-p-8g3-p-2-d11i-p-8g3-p-0=s88-c-k-c0x00ffffff-no-rj" alt=""><div class="video-card__text"><h4>Приклад відео</h4><p>Приклад каналу</p><p>100 тис. переглядів</p></div></div></div>
+
+            </main>
         </div>
     </div>
-</div>
 
 </body>
 </html>
