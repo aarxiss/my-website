@@ -1,0 +1,224 @@
+/* --- ЗАГАЛЬНІ СТИЛІ --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: #0f0f0f;
+}
+
+/* --- ШАПКА (HEADER) --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 56px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__left, .header__center, .header__right {
+    display: flex;
+    align-items: center;
+}
+
+.header__left img {
+    height: 25px;
+    margin-left: 24px;
+}
+
+.header__center {
+    flex: 0.5;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.header__center input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 40px 0 0 40px;
+}
+
+.header__center button {
+    padding: 4px 20px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    border-radius: 0 40px 40px 0;
+}
+
+.header__right .material-icons {
+    margin: 0 12px;
+    cursor: pointer;
+}
+
+.material-icons {
+    color: #606060;
+}
+
+
+/* --- ОСНОВНА ЧАСТИНА СТОРІНКИ --- */
+.main-body {
+    display: flex;
+}
+
+/* --- БІЧНА ПАНЕЛЬ (SIDEBAR) --- */
+.sidebar {
+    flex: 0 1 240px; /* Займає 240px, не росте, але може стискатися */
+    padding-top: 10px;
+    background-color: white;
+    height: calc(100vh - 56px); /* Висота екрану мінус висота шапки */
+    position: sticky;
+    top: 56px;
+}
+
+.sidebar__item {
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    cursor: pointer;
+}
+
+.sidebar__item:hover {
+    background-color: #eee;
+}
+
+.sidebar__item span {
+    margin-left: 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
+}
+
+
+/* --- КОНТЕНТ (ФІЛЬТРИ + ВІДЕО) --- */
+.content {
+    width: 100%;
+    background-color: #f9f9f9;
+}
+
+/* --- ФІЛЬТРИ --- */
+.filters {
+    display: flex;
+    padding: 12px 24px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 56px;
+    z-index: 99;
+    overflow-x: auto;
+}
+
+.filters::-webkit-scrollbar {
+    display: none; /* Приховуємо смугу прокрутки */
+}
+
+.filter-btn {
+    background-color: #f2f2f2;
+    color: #0f0f0f;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-right: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.filter-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.filter-btn.active {
+    background-color: #0f0f0f;
+    color: white;
+}
+
+
+/* --- СІТКА З ВІДЕО --- */
+.videos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 16px; /* 20px по вертикалі, 16px по горизонталі */
+    padding: 24px;
+}
+
+/* --- КАРТКА ВІДЕО --- */
+.video-card {
+    width: calc(33.33% - 12px); /* 3 картки в ряд, враховуючи відступи */
+    cursor: pointer;
+}
+
+.video-card__thumbnail {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Зберігає пропорції відео 16:9 */
+    border-radius: 12px;
+    overflow: hidden; /* Обрізає все, що виходить за межі */
+    background-color: #e0e0e0;
+}
+
+.video-card__thumbnail iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-card__info {
+    display: flex;
+    margin-top: 12px;
+}
+
+.video-card__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover; /* Запобігає деформації зображення */
+    background-color: #ccc;
+}
+
+.video-card__text h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.video-card__text p {
+    margin: 0;
+    font-size: 14px;
+    color: #606060;
+}
+
+
+/* --- АДАПТИВНІСТЬ --- */
+@media (max-width: 1024px) {
+    .video-card {
+        width: calc(50% - 8px); /* 2 картки в ряду */
+    }
+    .sidebar {
+        display: none; /* Приховуємо бічну панель */
+    }
+}
+
+@media (max-width: 640px) {
+    .video-card {
+        width: 100%; /* 1 картка в ряду */
+    }
+    .header__center {
+        display: none; /* Приховуємо пошук */
+    }
+}
