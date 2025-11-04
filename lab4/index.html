@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Planner</title>
+    
+    <!-- 2. Підключення кастомних шрифтів -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --font-header: 'Oswald', sans-serif;
+            --font-body: 'Lato', sans-serif;
+            --color-border: #aaa;
+            --color-border-light: #e0e0e0;
+            --color-bg: #f9f9f9;
+            --color-footer: #777;
+        }
+
+        /* Базові налаштування */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: #333;
+            padding: 2rem;
+        }
+
+        /* 1. Розмітка сторінки створена за допомогою grid */
+        .planner-container {
+            display: grid;
+            /* Визначаємо 2 колонки: 300px для бічної панелі, 1fr - решта */
+            grid-template-columns: 300px 1fr;
+            /* Визначаємо 3 рядки: auto для хедера/футера, 1fr - для контенту */
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+            
+            width: 100%;
+            max-width: 1400px; /* 5. Сторінка реагує на зміни */
+            min-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border: 2px solid var(--color-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- Хедер --- */
+        .planner-header {
+            grid-area: header;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap; /* 5. Дозволяє переносити елементи */
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .planner-header h1 {
+            font-family: var(--font-header);
+            font-size: 2.5rem;
+            margin-right: 2rem;
+            text-transform: uppercase;
+        }
+        
+        /* 4. Всі поля для вводу можна редагувати */
+        .header-field {
+            margin-right: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .header-field label {
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+        .header-field input[type="text"] {
+            border: none;
+            border-bottom: 2px solid var(--color-border-light);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            padding: 2px 0;
+        }
+        .header-field input[type="text"]:focus {
+            outline: none;
+            border-bottom-color: var(--color-border);
+        }
+        
+        .header-toggles {
+            margin-left: auto; /* Притискає до правого краю */
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* 3. Всі чекбокси клікабельні */
+        .header-toggles label {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .header-toggles input[type="checkbox"] {
+            margin-left: 0.5rem;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* --- Бічна панель (Sidebar) --- */
+        .sidebar-left {
+            grid-area: sidebar;
+            padding: 1.5rem;
+            border-right: 2px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-section h2 {
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--color-border-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .task-item input[type="checkbox"] {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+        }
+        .task-item input[type="text"] {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid var(--color-border-light);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            padding: 4px 0;
+        }
+        .task-item input[type="text"]:focus {
+            outline: none;
+            border-bottom-color: var(--color-border);
+        }
+
+        /* --- Основна сітка днів --- */
+        .days-grid {
+            grid-area: main;
+            display: grid;
+            /* 1. Вкладена сітка для днів */
+            grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+            /* 5. fr реагує на зміну розміру */
+        }
+        
+        .day-block {
+            border-bottom: 1px solid var(--color-border);
+            border-left: 1px solid var(--color-border);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Видаляємо зайві рамки, щоб сітка виглядала чистою */
+        .days-grid .day-block:nth-child(3n+1) { border-left: none; }
+        .days-grid .day-block[data-day="thursday"],
+        .days-grid .day-block[data-day="friday"],
+        .days-grid .sat-sun-container {
+            border-top: 1px solid var(--color-border);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .day-header h3 {
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+        .day-header input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* 4. Редаговані поля (textarea) */
+        .day-block textarea {
+            flex-grow: 1; /* Займає весь доступний простір */
+            border: none;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            resize: vertical; /* Дозволяє змінювати розмір по висоті */
+            min-height: 150px; /* 5. Мінімальна висота */
+            outline: none;
+        }
+
+        /* Контейнер для Суботи та Неділі */
+        .sat-sun-container {
+            display: grid;
+            grid-template-rows: 1fr 1fr; /* Ділить комірку на 2 рядки */
+            padding: 0;
+            border-left: 1px solid var(--color-border);
+        }
+        .sat-sun-container .day-block {
+            border: none; /* Скидаємо рамки, бо вони вже є на контейнері */
+        }
+        .sat-sun-container .day-block[data-day="sunday"] {
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* --- Футер --- */
+        .planner-footer {
+            grid-area: footer;
+            height: 30px;
+            background-color: var(--color-footer);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="planner-container">
+        <!-- Хедер -->
+        <header class="planner-header">
+            <h1>Weekly Plan</h1>
+            <div class="header-field">
+                <label for="week-of">Week Of:</label>
+                <input type="text" id="week-of">
+            </div>
+            <div class="header-field">
+                <label for="habit">Healthy Habit:</label>
+                <input type="text" id="habit">
+            </div>
+            <div class="header-toggles">
+                <label>
+                    Rocked It
+                    <input type="checkbox" id="rocked-it">
+                </label>
+                <label>
+                    Room for Improvement
+                    <input type="checkbox" id="improvement">
+                </label>
+            </div>
+        </header>
+
+        <!-- Бічна панель -->
+        <aside class="sidebar-left">
+            <div class="sidebar-section">
+                <h2>Top 3 Goals</h2>
+                <div class="task-list">
+                    <div class="task-item">
+                        <input type="checkbox" id="g1"><input type="text" placeholder="Goal 1...">
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" id="g2"><input type="text" placeholder="Goal 2...">
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" id="g3"><input type="text" placeholder="Goal 3...">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h2>Everything Else</h2>
+                <div class="task-list">
+                    <div class="task-item"><input type="checkbox" id="e1"><input type="text"></div>
+                    <div class="task-item"><input type="checkbox" id="e2"><input type="text"></div>
+                    <div class="task-item"><input type="checkbox" id="e3"><input type="text"></div>
+                    <div class="task-item"><input type="checkbox" id="e4"><input type="text"></div>
+                    <div class="task-item"><input type="checkbox" id="e5"><input type="text"></div>
+                    <div class="task-item"><input type="checkbox" id="e6"><input type="text"></div>
+                    <div class="task-item"><input type="checkbox" id="e7"><input type="text"></div>
+                </div>
+            </div>
+            
+             <div class="sidebar-section">
+                <h2>Next Week</h2>
+                <div class="task-list">
+                    <div class="task-item"><input type="checkbox" id="n1"><input type="text"></div>
+                    <div class="task-item"><input type="checkbox" id="n2"><input type="text"></div>
+                    <div class="task-item"><input type="checkbox" id="n3"><input type="text"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Сітка днів -->
+        <main class="days-grid">
+            <!-- Понеділок -->
+            <div class="day-block" data-day="monday">
+                <div class="day-header">
+                    <h3>Monday</h3>
+                    <input type="checkbox">
+                </div>
+                <textarea placeholder="What's the plan?"></textarea>
+            </div>
+            
+            <!-- Вівторок -->
+            <div class="day-block" data-day="tuesday">
+                <div class="day-header">
+                    <h3>Tuesday</h3>
+                    <input type="checkbox">
+                </div>
+                <textarea placeholder="What's the plan?"></textarea>
+            </div>
+
+            <!-- Середа -->
+            <div class="day-block" data-day="wednesday">
+                <div class="day-header">
+                    <h3>Wednesday</h3>
+                    <input type="checkbox">
+                </div>
+                <textarea placeholder="What's the plan?"></textarea>
+            </div>
+
+            <!-- Четвер -->
+            <div class="day-block" data-day="thursday">
+                <div class="day-header">
+                    <h3>Thursday</h3>
+                    <input type="checkbox">
+                </div>
+                <textarea placeholder="What's the plan?"></textarea>
+            </div>
+
+            <!-- П'ятниця -->
+            <div class="day-block" data-day="friday">
+                <div class="day-header">
+                    <h3>Friday</h3>
+                    <input type="checkbox">
+                </div>
+                <textarea placeholder="What's the plan?"></textarea>
+            </div>
+
+            <!-- Субота / Неділя (вкладена сітка) -->
+            <div class="sat-sun-container">
+                <div class="day-block" data-day="saturday">
+                    <div class="day-header">
+                        <h3>Saturday</h3>
+                        <input type="checkbox">
+                    </div>
+                    <textarea placeholder="..."></textarea>
+                </div>
+                <div class="day-block" data-day="sunday">
+                    <div class="day-header">
+                        <h3>Sunday</h3>
+                        <input type="checkbox">
+                    </div>
+                    <textarea placeholder="..."></textarea>
+                </div>
+            </div>
+        </main>
+
+        <!-- Футер -->
+        <footer class="planner-footer"></footer>
+    </div>
+
+</body>
+</html>
