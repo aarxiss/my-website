@@ -1,37 +1,187 @@
-.styled-form {
-    background: #f4f4f9;              /* колір фону */
-    color: #333;                      /* колір тексту */
-    width: 350px;                     /* ширина форми */
-    margin: 50px auto;                /* позиціонування по центру */
-    padding: 20px;                    /* внутрішні відступи */
-    border-radius: 12px;              /* закруглені кути */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* тінь */
+/* --- Сброс стилей и общие настройки --- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    margin: 0;
+    color: #21243D;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.container {
+    max-width: 856px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* --- Header / Меню --- */
+.header {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end; /* Меню прижато вправо */
+    padding: 20px 60px;
 }
 
-.styled-form label {
-    margin-bottom: 5px;
-    font-weight: bold;
+.nav-link {
+    margin-left: 33px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000;
 }
 
-.styled-form input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+.nav-link:hover {
+    color: #FF6464;
 }
 
-.styled-form button {
-    background: #2c3e50;
+/* --- Hero Section (О себе) --- */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 50px; /* Расстояние между текстом и фото */
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+.hero-title {
+    font-size: 44px;
+    line-height: 60px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.hero-text {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #FF6464;
     color: #fff;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 20px;
 }
 
-.styled-form button:hover {
-    background: #1a252f;
+.hero-avatar {
+    width: 243px;
+    height: 243px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: -5px 13px 0 #EDF7FA; /* Та самая тень-кружок */
+}
+
+/* --- Голубая секция (Recent Posts) --- */
+.recent-posts {
+    background-color: #EDF7FA;
+    padding: 25px 0 60px 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки */
+    gap: 20px;
+}
+
+.post-card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 4px;
+    box-shadow: 0px 4px 10px rgba(187, 225, 250, 0.25);
+}
+
+.post-card h3 {
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.post-meta {
+    margin-bottom: 10px;
+    color: #21243D;
+    font-weight: 400;
+}
+
+/* --- Список работ (Featured Works) --- */
+.featured-works {
+    padding: 40px 0;
+}
+
+.work-item {
+    display: flex;
+    gap: 18px;
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.work-img {
+    width: 246px;
+    height: 180px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.work-meta .year {
+    background: #142850;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 16px;
+    font-weight: 900;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.work-meta .topic {
+    color: #8695A4;
+    font-size: 20px;
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: 50px 0;
+    margin-top: 50px;
+}
+
+/* --- Адаптив для телефона --- */
+@media (max-width: 700px) {
+    .header { justify-content: center; padding: 10px; }
+    .nav-link { margin: 0 10px; font-size: 16px; }
+    
+    .hero {
+        flex-direction: column-reverse; /* Фото наверх */
+        text-align: center;
+        padding: 30px 15px;
+    }
+    
+    .posts-grid { grid-template-columns: 1fr; } /* Одна колонка */
+    
+    .work-item { flex-direction: column; }
+    .work-img { width: 100%; height: auto; }
 }
