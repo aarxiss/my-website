@@ -65,31 +65,35 @@ body {
 /* --- ПЕРСОНАЖ --- */
 .character {
     position: absolute;
-    bottom: 80px; 
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
 
-    /* Перевір, чи ці розміри правильні! */
-    width: 90px;
-    height: 57px; /* 228 розділити на 4 = 57 */
-    
-    /* Шлях до картинки */
+    /* 1. Розмір "віконця", через яке ми дивимось на персонажа */
+    width: 90px;   
+    height: 57px;  /* 228 / 4 = 57 */
+
+    /* 2. Підключаємо картинку */
     background-image: url('char_run.png');
     background-repeat: no-repeat;
-    
-    /* ВАЖЛИВО: Анімація */
-    animation: run-cycle 0.8s steps(4) infinite;
+
+    /* 3. ВАЖЛИВО! Примусово задаємо розмір вихідної картинки */
+    /* Це гарантує, що браузер не буде її розтягувати чи стискати */
+    background-size: 90px 228px; 
+
+    /* 4. Анімація */
+    animation: run 0.8s steps(4) infinite;
 }
 
-/* Ключові кадри руху */
-@keyframes run-cycle {
+/* 5. Сама анімація руху */
+@keyframes run {
     0% {
         background-position: 0px 0px;
     }
     100% {
-        /* Мінус ВСЯ висота картинки */
-        background-position: 0px -228px; 
+        /* Зсуваємо картинку вгору рівно на її висоту */
+        background-position: 0px -228px;
     }
 }
 
