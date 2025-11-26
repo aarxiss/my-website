@@ -1,1 +1,143 @@
+/* Сброс отступов */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333; /* Темный фон вокруг сцены */
+    font-family: 'Heebo', sans-serif;
+}
 
+/* --- СЦЕНА --- */
+.scene {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    overflow: hidden; /* Всё, что вылезает за рамки — прячем */
+    border: 10px solid white;
+    border-radius: 10px;
+    background-color: #87CEEB; /* Базовый цвет неба */
+}
+
+/* --- НЕБО (Анимация градиента) --- */
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #87CEEB, #bfe9ff, #87CEEB);
+    background-size: 200% 100%;
+    /* Анимация движения облаков/цвета */
+    animation: sky-move 10s linear infinite; 
+    z-index: 1;
+}
+
+@keyframes sky-move {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
+
+/* --- СОЛНЦЕ --- */
+.sun {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 40px #FFD700;
+    z-index: 2;
+    /* Легкая пульсация */
+    animation: sun-pulse 3s infinite alternate;
+}
+
+@keyframes sun-pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); box-shadow: 0 0 60px #FFA500; }
+}
+
+/* --- ЗЕМЛЯ (Параллакс эффект) --- */
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background-color: #4CAF50;
+    /* Добавим текстуру травы (паттерн) */
+    background-image: 
+        linear-gradient(45deg, #43a047 25%, transparent 25%, transparent 75%, #43a047 75%, #43a047), 
+        linear-gradient(45deg, #43a047 25%, transparent 25%, transparent 75%, #43a047 75%, #43a047);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    z-index: 3;
+    /* Анимация "езды" земли, чтобы казалось, что мы бежим */
+    animation: ground-run 1s linear infinite;
+}
+
+@keyframes ground-run {
+    0% { background-position-x: 0px; }
+    100% { background-position-x: -40px; } /* Сдвигаем на ширину паттерна */
+}
+
+/* --- ПОКЕМОН (Спрайтовая анимация) --- */
+.pokemon {
+    position: absolute;
+    bottom: 90px; /* Ставим на землю */
+    left: 50%;    /* По центру */
+    transform: translateX(-50%);
+    
+    /* РАЗМЕРЫ ВАЖНЫ! */
+    width: 96px;  /* Ширина ОДНОГО кадра */
+    height: 96px; /* Высота кадра */
+    
+    /* Ссылка на спрайт-лист (взял из интернета для примера) */
+    /* Это лист с 4 кадрами движения */
+    background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif');
+    /* Для статического спрайта (png strip) настройки были бы другими, 
+       но т.к. найти хороший PNG стрип сложно, я покажу пример с GIF,
+       а ниже напишу код для PNG стрипа, который требует лаба */
+    
+    background-repeat: no-repeat;
+    background-size: cover; 
+    z-index: 4;
+}
+
+/* ВАРИАНТ ДЛЯ PNG СПРАЙТА (Как требует задание):
+   Если ты найдешь PNG картинку (strip), где 4 кадра в ряд:
+*/
+/*
+.pokemon {
+    width: 64px;  <-- Ширина 1 кадра
+    height: 64px;
+    background-image: url('../img/pikachu-run-strip.png');
+    
+    animation: run-cycle 0.6s steps(4) infinite; 
+}
+
+@keyframes run-cycle {
+    0% { background-position: 0px; }
+    100% { background-position: -256px; } <-- (64px * 4 кадра = 256px)
+}
+*/
+
+.message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 0 #000;
+    z-index: 5;
+    animation: text-bounce 1s infinite alternate;
+}
+
+@keyframes text-bounce {
+    from { top: 20px; }
+    to { top: 30px; }
+}
