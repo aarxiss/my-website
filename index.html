@@ -3,59 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Особистий веб-сайт Греци Миколи Олександровича</title>
+    <title>Особистий веб-сайт Греци Миколи</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Заголовок -->
-    <header>
-        <h1>Особистий веб-сайт Греци Миколи</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Головна</a></li>
-                <li><a href="pages/about.html">Про мене</a></li>
-                <li><a href="pages/practicals.html">Практичні роботи</a></li>
-                <li><a href="pages/labs.html">Лабораторні заняття</a></li>
-            </ul>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="pages/practicals.html" class="nav-link">Практичні</a>
+            <a href="pages/labs.html" class="nav-link">Лабораторні</a>
+            <a href="pages/about.html" class="nav-link">Про мене</a>
         </nav>
     </header>
 
-    <!-- Про мене -->
-    <section id="about">
-        <h2>Про мене</h2>
-        <img src="img/play.jpg" alt="Фото студента" width="200">
-        <p>Мене звати Микола. Я студент групи ТЦР-22 університету ДУІКТ. Цікавлюся веб-розробкою, програмуванням та технологіями.</p>
-        <p>Email: <a href="grecanikolay06@gmail.com">gmail</a></p>
-    </section>
-
-    <!-- Практичні роботи -->
-    <section id="practicals">
-        <h2>Практичні роботи</h2>
-        <ul>
-            <li><a href="rozklad.html">Практична робота №1</a> — Основи HTML</li>
-            <li><a href="practic3/index3.html">Практична робота №3</a> — YouTube Clone</li>
-            <li><a href="practic4/index.html">Практична робота № 4</a> — Клавіатура</li>
-            <li></li><a href="lab4/index.html">Лабораторна робота №4</a> - Планер</li>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Привіт, я Микола,<br>Студент ТЦР-22</h1>
+                <p class="hero-text">
+                    Мене звати Микола. Я студент університету ДУІКТ. Цікавлюся веб-розробкою, програмуванням та технологіями.
+                </p>
+                <a href="mailto:grecanikolay06@gmail.com" class="btn-primary">Написати мені</a>
+            </div>
             
+            <div class="hero-image-container">
+                <img src="img/play.jpg" alt="Микола Греца" class="hero-avatar">
+            </div>
+        </section>
 
-        </ul>
-    </section>
+        <section class="recent-posts">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Практичні роботи</h2>
+                    <a href="pages/practicals.html" class="view-all">Всі роботи</a>
+                </div>
 
-    <!-- Лабораторні заняття -->
-    <section id="labs">
-        <h2>Лабораторні заняття</h2>
-        <ul>
-            <li><a href="lab2.html">Лабораторна №1</a> — Тема...</li>
-          
+                <div class="posts-grid">
+                    <div class="post-card">
+                        <h3><a href="rozklad.html">Практична робота №1</a></h3>
+                        <div class="post-meta">Основи HTML</div>
+                        <p>Робота з базовою розміткою сторінки.</p>
+                    </div>
 
-        </ul>
-    </section>
+                    <div class="post-card">
+                        <h3><a href="practic3/index3.html">Практична робота №3</a></h3>
+                        <div class="post-meta">YouTube Clone</div>
+                        <p>Створення копії інтерфейсу YouTube.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Футер -->
-    <footer>
-        <p>© 2025 Греца М.О | GitHub: 
-            <a href="https://github.com/aarxiss" target="_blank">aarxiss</a>
-        </p>
+        <section class="featured-works">
+            <div class="container">
+                <h2>Лабораторні заняття</h2>
+                
+                <div class="work-item">
+                    <img src="https://via.placeholder.com/246x180" alt="Pre" class="work-img">
+                    <div class="work-content">
+                        <h3><a href="lab4/index.html">Лабораторна робота №4</a></h3>
+                        <div class="work-meta">
+                            <span class="year">2025</span>
+                            <span class="topic">Планер</span>
+                        </div>
+                        <p>Опис лабораторної роботи про створення планера.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-icons">
+            </div>
+        <p>© 2025 Греца М.О | <a href="https://github.com/aarxiss" target="_blank">GitHub</a></p>
     </footer>
+
 </body>
 </html>
