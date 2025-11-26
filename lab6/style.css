@@ -62,33 +62,33 @@ body {
     to { transform: translateX(-50%); }
 }
 
-/* --- ПЕРСОНАЖ (Твоя анимация) --- */
+/* --- ПЕРСОНАЖ --- */
 .character {
     position: absolute;
-    bottom: 80px; /* Ставим на землю */
-    left: 50%;    /* По центру */
+    bottom: 80px; 
+    left: 50%;
     transform: translateX(-50%);
     z-index: 3;
 
-    /* === ГЛАВНЫЕ НАСТРОЙКИ СПРАЙТА === */
-    width: 90px;  /* Ширина ОДНОГО кадра */
-    height: 57px; /* Высота ОДНОГО кадра (228 / 4) */
+    /* Перевір, чи ці розміри правильні! */
+    width: 90px;
+    height: 57px; /* 228 розділити на 4 = 57 */
     
-    background-image: url('char_run.png'); /* Путь к твоей картинке */
+    /* Шлях до картинки */
+    background-image: url('char_run.png');
     background-repeat: no-repeat;
     
-    /* Анимация: имя, время, ШАГИ(количество кадров), бесконечно */
-    /* steps(4) - потому что у тебя 4 человечка */
+    /* ВАЖЛИВО: Анімація */
     animation: run-cycle 0.8s steps(4) infinite;
 }
 
-/* Ключевые кадры для ВЕРТИКАЛЬНОГО спрайта */
+/* Ключові кадри руху */
 @keyframes run-cycle {
-    from {
+    0% {
         background-position: 0px 0px;
     }
-    to {
-        /* Двигаем фон ВВЕРХ на общую высоту картинки */
+    100% {
+        /* Мінус ВСЯ висота картинки */
         background-position: 0px -228px; 
     }
 }
