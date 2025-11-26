@@ -74,7 +74,7 @@ body {
     width: 90px;  /* Ширина ОДНОГО кадра */
     height: 57px; /* Высота ОДНОГО кадра (228 / 4) */
     
-    background-image: url('img/char_run.png'); /* Путь к твоей картинке */
+    background-image: url('char_run.png'); /* Путь к твоей картинке */
     background-repeat: no-repeat;
     
     /* Анимация: имя, время, ШАГИ(количество кадров), бесконечно */
