@@ -1,1 +1,91 @@
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+.header, .footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.container {
+    display: flex;          /* Включаємо гнучку верстку */
+    max-width: 1200px;
+    margin: 20px auto;      /* Центруємо контейнер */
+    background: white;
+    padding: 20px;
+    gap: 20px;              /* Відступ між сайдбаром і контентом */
+}
+
+.sidebar {
+    flex: 1;                /* Сайдбар займає 1 частину ширини */
+    background: #e2e2e2;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.content {
+    flex: 3;                /* Контент займає 3 частини (ширше) */
+    background: #fff;
+}
+
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-list li {
+    margin-bottom: 10px;
+}
+
+.menu-list a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+
+.box-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.box {
+    flex: 1;
+    padding: 30px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.box-1 { background-color: #FF6464; }
+.box-2 { background-color: #00A8CC; }
+.box-3 { background-color: #21243D; }
+
+@media (max-width: 768px) {
+        flex-direction: column;
+    }
+
+    .sidebar, .content {
+        width: 100%;
+    }
+    .sidebar {
+        order: 2; 
+    }
+    .content {
+        order: 1;
+    }
+    .box-wrapper {
+        flex-direction: column;
+    }
+}
