@@ -1,4 +1,4 @@
-/* --- Загальні стилі --- */
+/* Основные стили (для компьютера) */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +6,6 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Стилі для шапки та підвалу */
 .header, .footer {
     background-color: #333;
     color: white;
@@ -18,51 +17,36 @@ body {
     margin: 0;
 }
 
-/* --- ПК Версія (Flexbox) --- */
+/* Контейнер: на ПК это строка (Сайдбар слева, Контент справа) */
 .container {
-    display: flex;          /* Включаємо гнучку верстку */
-    max-width: 1000px;
-    margin: 20px auto;      /* Центруємо контейнер */
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
     background: white;
     padding: 20px;
-    gap: 20px;              /* Відступ між сайдбаром і контентом */
+    gap: 20px;
 }
 
 .sidebar {
-    flex: 1;                /* Сайдбар займає 1 частину ширини */
+    flex: 1; /* Сайдбар занимает 1 часть */
     background: #e2e2e2;
     padding: 20px;
     border-radius: 5px;
+    min-width: 200px;
 }
 
 .content {
-    flex: 3;                /* Контент займає 3 частини (ширше) */
+    flex: 3; /* Контент занимает 3 части */
     background: #fff;
 }
 
-/* Меню в сайдбарі */
-.menu-list {
-    list-style: none;
-    padding: 0;
-}
+/* Ссылки в меню */
+.menu-list { list-style: none; padding: 0; }
+.menu-list li { margin-bottom: 10px; }
+.menu-list a { text-decoration: none; color: #333; font-weight: bold; display: block; }
+.menu-list a:hover { color: #FF6464; }
 
-.menu-list li {
-    margin-bottom: 10px;
-}
-
-.menu-list a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    display: block;
-    padding: 5px 0;
-}
-
-.menu-list a:hover {
-    color: #FF6464;
-}
-
-/* Блоки всередині контенту */
+/* Цветные блоки: на ПК они в ряд */
 .box-wrapper {
     display: flex;
     gap: 15px;
@@ -81,32 +65,34 @@ body {
 .box-1 { background-color: #FF6464; }
 .box-2 { background-color: #00A8CC; }
 .box-3 { background-color: #21243D; }
-
-
 @media (max-width: 768px) {
-   
+    
+    /* 1. Главный контейнер делаем вертикальным */
     .container {
-        flex-direction: column !important; /* !important заставит его слушаться */
-        align-items: stretch;
+        flex-direction: column !important;
     }
 
-    
+    /* 2. Растягиваем сайдбар и контент на всю ширину */
     .sidebar, .content {
         width: 100%;
-        max-width: 100%;
         margin: 0;
+        flex: auto; /* Сбрасываем пропорции */
     }
-    
-  
-    .sidebar {
-        order: 2;
-    }
-    
+
+    /* 3. Меняем порядок: Контент сверху (1), Меню снизу (2) */
     .content {
         order: 1;
     }
+    .sidebar {
+        order: 2;
+    }
 
+    /* 4. Цветные блоки тоже ставим в колонку */
     .box-wrapper {
-        flex-direction: column;
+        flex-direction: column !important;
+    }
+    
+    .box {
+        margin-bottom: 10px; /* Отступ снизу для красоты */
     }
 }
