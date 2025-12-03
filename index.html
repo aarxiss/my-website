@@ -2,21 +2,24 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <!-- Цей тег обов'язковий для мобільної версії -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Особистий веб-сайт Греци Миколи</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Переконайся, що шлях до CSS вірний -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <header class="header">
-        <!-- Гамбургер-меню для мобильных (Лаб 8) -->
+        <!-- 1. КНОПКА МЕНЮ (З'являється тільки на телефоні) -->
         <div class="burger-menu" id="burgerMenu">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
             <span class="burger-line"></span>
         </div>
 
+        <!-- 2. НАВІГАЦІЯ -->
         <nav class="nav" id="navMenu">
             <a href="pages/practicals.html" class="nav-link">Практичні</a>
             <a href="pages/labs.html" class="nav-link">Лабораторні</a>
@@ -82,7 +85,6 @@
                 <!-- Лабораторна 6 -->
                 <div class="work-item">
                     <img src="lab6/img/char_run.png" alt="Спрайт анімація" class="work-img" style="object-fit: contain; background-color: #87CEEB; padding: 20px;">
-                    
                     <div class="work-content">
                         <h3><a href="lab6/index.html">Лабораторна робота №6</a></h3>
                         <div class="work-meta">
@@ -96,7 +98,6 @@
                 <!-- Лабораторна 7 -->
                 <div class="work-item">
                     <img src="lab7/preview.png" alt="Новорічна листівка" class="work-img" style="object-fit: cover; background-color: #1a2f4b;">
-                    
                     <div class="work-content">
                         <h3><a href="lab7/index.html">Лабораторна робота №7</a></h3>
                         <div class="work-meta">
@@ -107,13 +108,10 @@
                     </div>
                 </div>
 
-                <!-- Лабораторна 8 (НОВА) -->
+                <!-- Лабораторна 8 -->
                 <div class="work-item">
-                    <!-- Переконайся, що у папці lab8 є файл preview.png -->
                     <img src="lab8/preview.png" alt="Адаптивність" class="work-img" style="object-fit: cover; background-color: #e2e2e2;">
-                    
                     <div class="work-content">
-                        <!-- Посилання на папку lab8 -->
                         <h3><a href="lab8/index.html">Лабораторна робота №8</a></h3>
                         <div class="work-meta">
                             <span class="year">2025</span>
@@ -128,20 +126,24 @@
     </main>
 
     <footer class="footer">
-        <div class="social-icons">
-        </div>
         <p>© 2025 Греца М.О | <a href="https://github.com/aarxiss" target="_blank">GitHub</a></p>
     </footer>
 
-    <!-- Скрипт для мобільного меню -->
+    <!-- 3. СКРИПТ (Без нього меню не відкриється) -->
     <script>
+        // Знаходимо елементи в HTML
         const burger = document.getElementById('burgerMenu');
         const nav = document.getElementById('navMenu');
 
+        // Перевіряємо, чи існують вони на сторінці
         if (burger && nav) {
-            burger.addEventListener('click', () => {
+            // Додаємо обробку кліку
+            burger.addEventListener('click', function() {
+                // Перемикаємо клас 'open', який показує меню (написано в CSS)
                 nav.classList.toggle('open');
             });
+        } else {
+            console.error("Елементи меню не знайдені! Перевір ID в HTML.");
         }
     </script>
 
