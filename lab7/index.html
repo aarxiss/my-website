@@ -4,7 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новорічна Листівка</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        :root {
+            --bg-color-primary: #1a2f4b;
+            --bg-color-accent: #c0392b;
+            --text-color-light: #ffffff;
+            --text-color-gold: #f1c40f;
+            --snow-color: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color-primary);
+            color: var(--text-color-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+       
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--text-color-gold);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .card__title {
+            font-size: 3rem;
+            color: var(--text-color-gold);
+            margin-bottom: 20px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .card__message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .card__tree {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .card__button {
+            background-color: var(--bg-color-accent);
+            color: var(--text-color-light);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .card__button:hover {
+            background-color: #e74c3c;
+            transform: scale(1.05);
+        }
+
+       
+        #gift-box {
+            display: none; /* Скрыто по умолчанию */
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(241, 196, 15, 0.2);
+            border-radius: 10px;
+            border: 1px dashed var(--text-color-gold);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* --- Снег --- */
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(var(--snow-color) 2px, transparent 3px),
+                radial-gradient(var(--snow-color) 1px, transparent 2px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 20px 40px;
+            animation: snow 10s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes snow {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 550px 550px, 350px 350px; }
+        }
+
+        @media (max-width: 600px) {
+            .card__title { font-size: 2rem; }
+            .card__message { font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
 
@@ -16,12 +141,31 @@
         <h1 class="card__title">З Новим Роком!</h1>
         
         <p class="card__message">
-            Бажаю успіхів у навчанні, легких лабораторних та крутих проектів у новому році! 
-            Нехай код компілюється з першого разу.
+            Бажаю успіхів у навчанні, легких лабораторних та крутих проектів у 2025 році!
         </p>
 
-        <button class="card__button">Отримати подарунок</button>
+        <!-- Кнопка вызывает JavaScript функцию -->
+        <button class="card__button" onclick="showGift()">Отримати подарунок</button>
+        
+        <!-- Сюда появится текст после нажатия -->
+        <div id="gift-box">
+            🎁 <strong>Твій подарунок:</strong><br>
+            Автомат з усіх предметів!
+        </div>
     </div>
+
+    <script>
+        function showGift() {
+            var giftBox = document.getElementById('gift-box');
+            var button = document.querySelector('.card__button');
+            
+            // Показываем блок с подарком
+            giftBox.style.display = 'block';
+            
+            // Прячем кнопку, чтобы не нажимали дважды (опционально)
+            button.style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
