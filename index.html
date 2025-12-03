@@ -2,24 +2,22 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <!-- Цей тег обов'язковий для мобільної версії -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Особистий веб-сайт Греци Миколи</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Переконайся, що шлях до CSS вірний -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <header class="header">
-        <!-- 1. КНОПКА МЕНЮ (З'являється тільки на телефоні) -->
+        <!-- Кнопка Гамбургер (видно тільки на телефоні) -->
         <div class="burger-menu" id="burgerMenu">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
             <span class="burger-line"></span>
         </div>
 
-        <!-- 2. НАВІГАЦІЯ -->
+        <!-- Навігація -->
         <nav class="nav" id="navMenu">
             <a href="pages/practicals.html" class="nav-link">Практичні</a>
             <a href="pages/labs.html" class="nav-link">Лабораторні</a>
@@ -108,16 +106,18 @@
                     </div>
                 </div>
 
-                <!-- Лабораторна 8 -->
+                <!-- ЛАБОРАТОРНА 8 (Адаптивність) -->
                 <div class="work-item">
+                    <!-- Переконайся, що в папці lab8 є картинка preview.png, або прибери src -->
                     <img src="lab8/preview.png" alt="Адаптивність" class="work-img" style="object-fit: cover; background-color: #e2e2e2;">
+                    
                     <div class="work-content">
                         <h3><a href="lab8/index.html">Лабораторна робота №8</a></h3>
                         <div class="work-meta">
                             <span class="year">2025</span>
                             <span class="topic">Adaptive Layout</span>
                         </div>
-                        <p>Модифікація сторінки. Додавання адаптивності для мобільних пристроїв (Media Queries) та гамбургер-меню.</p>
+                        <p>Модифікація сторінки. Додавання адаптивності для мобільних пристроїв та гамбургер-меню.</p>
                     </div>
                 </div>
 
@@ -129,21 +129,15 @@
         <p>© 2025 Греца М.О | <a href="https://github.com/aarxiss" target="_blank">GitHub</a></p>
     </footer>
 
-    <!-- 3. СКРИПТ (Без нього меню не відкриється) -->
+    <!-- Скрипт для роботи меню -->
     <script>
-        // Знаходимо елементи в HTML
         const burger = document.getElementById('burgerMenu');
         const nav = document.getElementById('navMenu');
 
-        // Перевіряємо, чи існують вони на сторінці
-        if (burger && nav) {
-            // Додаємо обробку кліку
-            burger.addEventListener('click', function() {
-                // Перемикаємо клас 'open', який показує меню (написано в CSS)
+        if(burger && nav) {
+            burger.addEventListener('click', () => {
                 nav.classList.toggle('open');
             });
-        } else {
-            console.error("Елементи меню не знайдені! Перевір ID в HTML.");
         }
     </script>
 
