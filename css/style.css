@@ -12,11 +12,13 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.3s ease;
 }
 
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .container {
@@ -29,7 +31,13 @@ ul {
 .header {
     display: flex;
     justify-content: flex-end; /* Меню прижато вправо */
+    align-items: center; /* Центрування по вертикалі */
     padding: 20px 60px;
+    position: relative; /* Важливо для позиціонування мобільного меню */
+}
+
+.nav {
+    display: flex;
 }
 
 .nav-link {
@@ -43,6 +51,23 @@ ul {
     color: #FF6464;
 }
 
+/* --- Гамбургер-меню (за замовчуванням приховане на ПК) --- */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px; /* Відстань між смужками */
+    z-index: 100;
+}
+
+.burger-line {
+    width: 30px;
+    height: 3px;
+    background-color: #21243D;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
 /* --- Hero Section (О себе) --- */
 .hero {
     display: flex;
@@ -51,7 +76,7 @@ ul {
     padding: 80px 20px;
     max-width: 1000px;
     margin: 0 auto;
-    gap: 50px; /* Расстояние между текстом и фото */
+    gap: 50px;
 }
 
 .hero-content {
@@ -79,6 +104,11 @@ ul {
     border-radius: 2px;
     font-weight: 500;
     font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e05353;
 }
 
 .hero-avatar {
@@ -86,7 +116,8 @@ ul {
     height: 243px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: -5px 13px 0 #EDF7FA; /* Та самая тень-кружок */
+    box-shadow: -5px 13px 0 #EDF7FA;
+    flex-shrink: 0;
 }
 
 /* --- Голубая секция (Recent Posts) --- */
@@ -102,9 +133,14 @@ ul {
     margin-bottom: 20px;
 }
 
+.view-all {
+    color: #00A8CC;
+    font-size: 16px;
+}
+
 .posts-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Две колонки */
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
@@ -113,6 +149,11 @@ ul {
     padding: 24px;
     border-radius: 4px;
     box-shadow: 0px 4px 10px rgba(187, 225, 250, 0.25);
+    transition: transform 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
 }
 
 .post-card h3 {
@@ -138,6 +179,12 @@ ul {
     border-bottom: 1px solid #E0E0E0;
     padding-bottom: 30px;
     margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.work-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .work-img {
@@ -145,6 +192,28 @@ ul {
     height: 180px;
     border-radius: 6px;
     object-fit: cover;
+    flex-shrink: 0; /* Щоб картинка не плющилась */
+    border: 1px solid #eee;
+}
+
+.work-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.work-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.work-meta {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .work-meta .year {
@@ -169,19 +238,76 @@ ul {
     margin-top: 50px;
 }
 
-/* --- Адаптив для телефона --- */
-@media (max-width: 700px) {
-    .header { justify-content: center; padding: 10px; }
-    .nav-link { margin: 0 10px; font-size: 16px; }
-    
+/* --- Адаптив для телефона (Меню + Блоки) --- */
+@media (max-width: 768px) {
+    /* Налаштування Header */
+    .header {
+        justify-content: space-between; /* Розводимо лого і бургер по краях, якщо є лого */
+        padding: 15px 20px;
+    }
+
+    /* Показуємо бургер */
+    .burger-menu {
+        display: flex;
+        margin-left: auto; /* Притискаємо вправо */
+    }
+
+    /* Мобільне меню (випадаюче) */
+    .nav {
+        display: none; /* Сховано за замовчуванням */
+        position: absolute;
+        top: 100%; /* Відразу під хедером */
+        right: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        z-index: 99;
+    }
+
+    /* Клас .open додається через JS */
+    .nav.open {
+        display: flex;
+    }
+
+    .nav-link {
+        margin: 15px 0;
+        margin-left: 0;
+        font-size: 24px;
+    }
+
+    /* Hero секція */
     .hero {
         flex-direction: column-reverse; /* Фото наверх */
         text-align: center;
         padding: 30px 15px;
+        gap: 30px;
     }
     
-    .posts-grid { grid-template-columns: 1fr; } /* Одна колонка */
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-avatar {
+        width: 170px;
+        height: 170px;
+    }
     
-    .work-item { flex-direction: column; }
-    .work-img { width: 100%; height: auto; }
+    /* Роботи в одну колонку */
+    .posts-grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .work-item { 
+        flex-direction: column; 
+    }
+    
+    .work-img { 
+        width: 100%; 
+        height: auto; 
+        max-height: 250px;
+        margin-bottom: 15px;
+    }
 }
