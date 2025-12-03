@@ -10,7 +10,14 @@
 <body>
 
     <header class="header">
-        <nav class="nav">
+        <!-- Гамбургер-меню для мобильных (Лаб 8) -->
+        <div class="burger-menu" id="burgerMenu">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </div>
+
+        <nav class="nav" id="navMenu">
             <a href="pages/practicals.html" class="nav-link">Практичні</a>
             <a href="pages/labs.html" class="nav-link">Лабораторні</a>
             <a href="pages/about.html" class="nav-link">Про мене</a>
@@ -86,9 +93,8 @@
                     </div>
                 </div>
 
-                <!-- Лабораторна 7 (ДОДАНО) -->
+                <!-- Лабораторна 7 -->
                 <div class="work-item">
-                    <!-- Якщо картинки ще немає, буде синій фон. Коли зробиш скріншот, поклади його в папку lab7 з назвою preview.png -->
                     <img src="lab7/preview.png" alt="Новорічна листівка" class="work-img" style="object-fit: cover; background-color: #1a2f4b;">
                     
                     <div class="work-content">
@@ -101,6 +107,22 @@
                     </div>
                 </div>
 
+                <!-- Лабораторна 8 (НОВА) -->
+                <div class="work-item">
+                    <!-- Переконайся, що у папці lab8 є файл preview.png -->
+                    <img src="lab8/preview.png" alt="Адаптивність" class="work-img" style="object-fit: cover; background-color: #e2e2e2;">
+                    
+                    <div class="work-content">
+                        <!-- Посилання на папку lab8 -->
+                        <h3><a href="lab8/index.html">Лабораторна робота №8</a></h3>
+                        <div class="work-meta">
+                            <span class="year">2025</span>
+                            <span class="topic">Adaptive Layout</span>
+                        </div>
+                        <p>Модифікація сторінки. Додавання адаптивності для мобільних пристроїв (Media Queries) та гамбургер-меню.</p>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
@@ -110,6 +132,18 @@
         </div>
         <p>© 2025 Греца М.О | <a href="https://github.com/aarxiss" target="_blank">GitHub</a></p>
     </footer>
+
+    <!-- Скрипт для мобільного меню -->
+    <script>
+        const burger = document.getElementById('burgerMenu');
+        const nav = document.getElementById('navMenu');
+
+        if (burger && nav) {
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
+        }
+    </script>
 
 </body>
 </html>
